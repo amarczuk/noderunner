@@ -1,0 +1,22 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^favicon(.*)$ static/favicon$1 [L]
+RewriteRule ^static/(.*)$ static/$1 [QSA,L]
+RewriteRule ^(.*)/static/(.*)$ $1/static/$2 [QSA,L]
+
+RewriteCond %{SCRIPT_FILENAME} !-f [OR]
+RewriteCond %{SCRIPT_FILENAME} !^.*bootstrap.php$ [NC]
+RewriteCond %{REQUEST_URI} ^(.*)$ [NC]
+RewriteRule ^ bootstrap.php?PHRESTOREQUESTPATH=%1 [QSA,L]
+
+RewriteRule ^.*\.ini$ - [F,L,NC]
+RewriteRule ^vendor/.*$ - [F,L,NC]
+RewriteRule ^modules/.*$ - [F,L,NC]
+RewriteRule ^lang/.*$ - [F,L,NC]
+
+:Location /*.php
+Use php7
+
+:Location /*.ico
+SetMime image/x-icon

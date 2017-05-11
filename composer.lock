@@ -1,0 +1,119 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "4800392215f96a56d323b7b2b7c5b444",
+    "packages": [
+        {
+            "name": "lusitanian/oauth",
+            "version": "v0.8.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Lusitanian/PHPoAuthLib.git",
+                "reference": "09f4af38f17db6938253f4d1b171d537913ac1ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Lusitanian/PHPoAuthLib/zipball/09f4af38f17db6938253f4d1b171d537913ac1ed",
+                "reference": "09f4af38f17db6938253f4d1b171d537913ac1ed",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "predis/predis": "0.8.*@dev",
+                "squizlabs/php_codesniffer": "2.*",
+                "symfony/http-foundation": "~2.1"
+            },
+            "suggest": {
+                "ext-openssl": "Allows for usage of secure connections with the stream-based HTTP client.",
+                "predis/predis": "Allows using the Redis storage backend.",
+                "symfony/http-foundation": "Allows using the Symfony Session storage backend."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "OAuth": "src",
+                    "OAuth\\Unit": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Desberg",
+                    "email": "david@daviddesberg.com"
+                },
+                {
+                    "name": "Elliot Chance",
+                    "email": "elliotchance@gmail.com"
+                },
+                {
+                    "name": "Pieter Hordijk",
+                    "email": "info@pieterhordijk.com"
+                }
+            ],
+            "description": "PHP 5.3+ oAuth 1/2 Library",
+            "keywords": [
+                "Authentication",
+                "authorization",
+                "oauth",
+                "security"
+            ],
+            "time": "2016-07-12T22:15:40+00:00"
+        },
+        {
+            "name": "phresto/phresto",
+            "version": "0.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amarczuk/phresto-lib.git",
+                "reference": "fa7565d5f2f388b546ede5f7cab6e6c572766123"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amarczuk/phresto-lib/zipball/fa7565d5f2f388b546ede5f7cab6e6c572766123",
+                "reference": "fa7565d5f2f388b546ede5f7cab6e6c572766123",
+                "shasum": ""
+            },
+            "require": {
+                "lusitanian/oauth": "*",
+                "php": ">=5.4.0"
+            },
+            "bin": [
+                "bin/phresto"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phresto\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Simple PHP REST framework",
+            "time": "2017-05-10T09:46:01+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

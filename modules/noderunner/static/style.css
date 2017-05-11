@@ -1,0 +1,13 @@
+pre.result {
+	display: block;
+	height: 400px;
+	border: 1px solid #bbb;
+}
+
+#code {
+	height: 400px;
+}
+
+.top-10 {
+	margin-top: 10px;
+}

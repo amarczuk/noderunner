@@ -1,0 +1,35 @@
+<div ng-controller="noderunnerAppController">
+	<div class="row">
+		<div class="small-12 columns">
+			<h2>webtask.io example</h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12 medium-6 columns">
+			<h4>write your node.js code below</h4>
+			<div id="code">{{code}}</div>
+		</div>
+		<div class="small-12 medium-6 columns">
+			<h4>see the result here</h4>
+			<pre class="result">{{result}}</pre>
+		</div>
+	</div>
+	<div class="row top-10">
+		<div class="small-12 columns text-center">
+			<button ng-click="run()" class="button" ng-disabled="loading">run code</button>
+		</div>
+	</div>
+
+	<div class="row top-10">
+		<div class="small-12 columns">
+			<h4>Instructions</h4>
+			<p>Just write your snippet and return the result.</p>
+			<p>For list of available modules go to: <a href="https://tehsis.github.io/webtaskio-canirequire/" target="_blank">https://tehsis.github.io/webtaskio-canirequire/</a></p>
+		</div>
+	</div>
+
+	<message/>
+
+</div>
+
