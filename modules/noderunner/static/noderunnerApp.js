@@ -7,15 +7,15 @@ angular.module('app', ['mm.foundation']).controller(
     function($scope, $document, $rootScope, $timeout) {
       $scope.routes = [];
       $scope.loading = false;
-      $scope.code = 'return "hello world!";\n';
+      $scope.code = 'var words = ["hello", "world!"];\nreturn words.join(" ");\n';
       $scope.result = '';
 
-      var editor = null;
+      var editors = [];
 
       $scope.run = function() {
         $scope.loading = true;
         $scope.result = 'running your code...';
-        phresto.post('noderunner/run', {code: editor.getValue()})
+        phresto.post('noderunner/run', {code: editors['code'].getValue()})
           .then(function(out) {
             $scope.$apply(function() {
               $scope.result = out.result;
@@ -32,24 +32,23 @@ angular.module('app', ['mm.foundation']).controller(
           });
       }
 
+      var setEditor = function(name, mode, isReadOnly) {
+          editors[name] = ace.edit(name);
+          editors[name].setTheme("ace/theme/monokai");
+          editors[name].getSession().setMode(mode);
+          if (isReadOnly) {
+            editors[name].setReadOnly(true);
+          }
+      }
+
       angular.element(document).ready(function () {
         $timeout(function() {
           $document.foundation();
 
-          editor = ace.edit("code");
-          editor.setTheme("ace/theme/monokai");
-          editor.getSession().setMode("ace/mode/javascript");
+          setEditor("code", "ace/mode/javascript");
+          setEditor("webtask_code", "ace/mode/javascript", true);
+          setEditor("controller_code", "ace/mode/php", true);
         }, 500);
       });
     }
   ]);
-
-angular.module('app').filter('prettyJSON', function () {
-    function prettyPrintJson(json) {
-
-      if (typeof json != 'object') return json;
-
-      return JSON.stringify(json, null, '  ');
-    }
-    return prettyPrintJson;
-});

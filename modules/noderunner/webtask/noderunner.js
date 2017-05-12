@@ -1,9 +1,17 @@
 var mysql = require('mysql');
 
+/**
+* executes code using Function constructor (form of eval)
+* it's little bit safer when combined with "use strict"
+* so it does not have an access to the global scope
+*
+* @param code string code to be executed
+* @return whatever is returned by the code
+*/
 var executeCode = function(code) {
 	var run = new Function('"use strict"; \n' + code);
 	return run();
-}
+};
 
 module.exports = function (ctx, cb) {
 
@@ -20,6 +28,7 @@ module.exports = function (ctx, cb) {
 	  	return;
 	  }
 
+	   // get code from DB based on id from query string
 	   con.query('SELECT * FROM nodecode WHERE id = ' + parseInt(ctx.data.codeid, 10), function (err, result) {
 	    if (err) {
 	    	cb(err);
@@ -28,8 +37,9 @@ module.exports = function (ctx, cb) {
 	    	cb(new Error('wrong code id'));
 	    }
 
+	    // execute given code
 	    cb(null, executeCode(result[0].code));
 	  });
 	  
 	});
-}
+};

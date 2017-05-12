@@ -8,7 +8,7 @@ use Phresto\View;
 use Phresto\Modules\Model\nodecode;
 
 /** 
-* Tool to make testing your application easier
+* Node.js code runner controller
 */
 class noderunner extends Controller {
 
@@ -22,16 +22,23 @@ class noderunner extends Controller {
 	*/
 	protected function get() {
 		$view = View::getView( 'main', 'noderunner' );
-		$view->add( 'main', [], 'noderunner' );
+		$view->add( 
+			'main', 
+			[ 
+				'webtaskCode' => file_get_contents(__DIR__ . '/../webtask/noderunner.js'), 
+				'controllerCode' => str_replace( '<', '&lt;', file_get_contents(__FILE__) )
+			], 
+			'noderunner' );
 
 		return $view->get();
 	}
 
 	/** 
 	* runs node.js code
+	* @param string $code the code to be run by webtask.io
 	* @return json
 	*/
-	public function run_post($code) {
+	public function run_post(string $code) {
 		$nodecode = new nodecode();
 		$nodecode->code = $code;
 		$nodecode->save();

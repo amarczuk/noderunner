@@ -4,7 +4,7 @@ pre.result {
 	border: 1px solid #bbb;
 }
 
-#code {
+.codeEditor {
 	height: 400px;
 }
 
