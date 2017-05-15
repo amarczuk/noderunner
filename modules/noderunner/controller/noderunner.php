@@ -13,7 +13,6 @@ use Phresto\Modules\Model\nodecode;
 class noderunner extends Controller {
 
 	const CLASSNAME = __CLASS__;
-	protected $routeMapping = ['run_post' => ['code' => 0]];
 	protected $webtaskUrl = 'https://wt-94fe49a9fc27036c2c94cee1aa2eda15-0.run.webtask.io/noderunner';
 
 	/** 

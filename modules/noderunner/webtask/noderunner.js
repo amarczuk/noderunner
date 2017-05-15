@@ -31,10 +31,10 @@ module.exports = function (ctx, cb) {
 	   // get code from DB based on id from query string
 	   con.query('SELECT * FROM nodecode WHERE id = ' + parseInt(ctx.data.codeid, 10), function (err, result) {
 	    if (err) {
-	    	cb(err);
+	    	return cb(err);
 	    }
 	    if (!result || !result[0]) {
-	    	cb(new Error('wrong code id'));
+	    	return cb(new Error('wrong code id'));
 	    }
 
 	    // execute given code
